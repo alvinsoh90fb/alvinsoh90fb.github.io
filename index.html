@@ -1,19 +1,5 @@
 <html>
     <head>
-        <!-- Meta Pixel Code -->
-        <script>
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '149149543972617');
-            fbq('track', 'PageView');
-        </script>
-        <!-- End Meta Pixel Code -->
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -22,6 +8,23 @@
             })(window,document,'script','dataLayer','GTM-KMVNV23');
         </script>
         <!-- End Google Tag Manager -->
+
+        <script>
+            function generateEventId() {
+                var dt = new Date().getTime();
+                var uuid = '123xxxxsx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (
+                    c,
+                ) {
+                    var r = (dt + Math.random() * 16) % 16 | 0;
+                    dt = Math.floor(dt / 16);
+                    return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+                });
+                return uuid;
+            }
+
+            dataLayer = [];
+            var eventID = generateEventId();
+        </script>
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
@@ -29,6 +32,13 @@
             height="0" width="0" style="display:none;visibility:hidden"></iframe>
         </noscript>
         <!-- End Google Tag Manager (noscript) -->
+
+        <main>
+            <script>
+                dataLayer.push({"eventId": eventID});
+            </script>
+        </main>
+
         <p>This is my test HTML site</p>
         <button>Click me!</button>
     </body>
